@@ -535,12 +535,6 @@ def principal() -> None:
         api_key = obter_chave_api()
         if api_key:
             st.success("Conexão com o modelo configurada.")
-        else:
-            api_key = st.text_input(
-                "Chave Groq (modo local)",
-                type="password",
-                help="No deploy, configure GROQ_API_KEY nos Secrets da plataforma.",
-            )
         model_name = st.selectbox(
             "Modelo",
             ["openai/gpt-oss-120b"],
@@ -583,8 +577,8 @@ def principal() -> None:
 
     if not api_key:
         st.error(
-            "Informe uma chave Groq na barra lateral. Ela é gratuita e necessária "
-            "para executar os agentes."
+            "A aplicação ainda não foi configurada pelo administrador. "
+            "No Streamlit Cloud, adicione GROQ_API_KEY em Settings > Secrets."
         )
         return
 
